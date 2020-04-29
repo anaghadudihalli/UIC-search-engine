@@ -6,8 +6,10 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import sqlite3
 
+
 class CrawlerPipeline(object):
     count = 0
+
     def __init__(self):
         self.create_connection()
         self.create_table()
@@ -20,7 +22,8 @@ class CrawlerPipeline(object):
         self.curr.execute("""CREATE TABLE IF NOT EXISTS pages(
                         title text,
                         url text,
-                        content text
+                        content text,
+                        outlinks text
                         )""")
 
     def process_item(self, item, spider):
@@ -28,9 +31,10 @@ class CrawlerPipeline(object):
         return item
 
     def store_db(self, item):
-        self.curr.execute("""insert into pages values(?,?,?)""", (
+        self.curr.execute("""insert into pages values(?,?,?,?)""", (
             item['title'],
             item['url'],
-            item['content']
+            item['content'],
+            item['outlinks']
         ))
         self.conn.commit()

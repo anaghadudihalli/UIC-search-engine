@@ -13,3 +13,4 @@ class CrawlerItem(scrapy.Item):
     title = scrapy.Field()
     url = scrapy.Field()
     content = scrapy.Field()
+    outlinks = scrapy.Field()
