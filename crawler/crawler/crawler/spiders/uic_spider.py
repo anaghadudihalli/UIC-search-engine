@@ -37,7 +37,7 @@ class UicSpiderSpider(CrawlSpider):
         # Extract page title
         if title.endswith(' | University of Illinois at Chicago'):
             title = title[:-36]
-        soup = BeautifulSoup(response.text, "lxml")
+        soup = BeautifulSoup(response.text, "html.parser")
         for div in soup.find_all("div", {'class': 'browser-stripe'}):
             div.decompose()
 
