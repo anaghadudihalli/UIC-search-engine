@@ -54,5 +54,5 @@ class UicSpiderSpider(CrawlSpider):
 
         item['title'] = title
         item['url'] = response.request.url
-        item['outlinks'] = str(outlinks)
+        item['outlinks'] = outlinks
         yield item
