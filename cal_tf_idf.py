@@ -138,6 +138,52 @@ def cal_document_weights(inverted_index, collection):
         document_weights[i + 1] = temp
     return document_weights
 
+def cal_query_weights(query_terms, inverted_index, collection):
+    """ Calculates and returns query weights
+    """
+    query_weights = {}
+    for i, query in enumerate(query_terms):
+        query_token_weights = {}
+        for term in query:
+            if term in inverted_index:
+                tf = query.count(term)/len(query)
+                idf = math.log2(len(collection)/len(inverted_index[term]))
+                tf_idf = tf * idf
+                query_token_weights[term] = tf_idf
+        query_weights[i+1] = query_token_weights
+    return query_weights
+
+def cal_cosine_similarity(query_list, collection, document_weights, query_weights):
+    """ Calculates and returns cosine similarities
+    """
+    global weight_squares
+    cosine_similarities_list = {}
+    for i, query in enumerate(query_list):
+        query_doc_cosine_similarities = {}
+        for j, document in enumerate(collection):
+            common_terms = list(set(query)&set(document))
+            query_document_weights_sum = 0
+            if common_terms:
+                for term in common_terms:
+                    # Numerator
+                    query_document_weights_sum += query_weights[i+1][term] * document_weights[j+1][term]
+                # Cosine similarities = Numerator / Denominator
+                query_doc_cosine_similarities[j+1] = query_document_weights_sum/math.sqrt(weight_squares[j])
+        cosine_similarities_list[i+1] = query_doc_cosine_similarities
+    return cosine_similarities_list
+
+def sort_cosine_similarities(cosine_similarities):
+    """Sorts and returns a list of cosine similarities in decreasing order"""
+
+    sorted_cosine_similarities = {}
+    for query in cosine_similarities:
+        # Sort the dictionary by value (item[1])
+        # Reverse = True because we want to sort it by decreasing order
+        # Documents which are most similar to query are on top
+        sorted_ = sorted(cosine_similarities[query].items(), key=lambda item: item[1], reverse=True)
+        sorted_cosine_similarities[query] = sorted_
+    return sorted_cosine_similarities
+
 
 corpus = read_files()
 corpus = preprocess_data(corpus)
@@ -148,3 +194,15 @@ terms = eliminate_stopwords(terms)
 terms = eliminate_one_two_character_words(terms)
 inverted_index = build_inverted_index(terms)
 document_weights = cal_document_weights(inverted_index, terms)
+queries = ["Computer Science"]
+queries = preprocess_data(queries)
+query_terms = tokenize_data(queries)
+query_terms = eliminate_stopwords(query_terms)
+query_terms = stem_tokens(query_terms)
+query_terms = eliminate_stopwords(query_terms)
+query_terms = eliminate_one_two_character_words(query_terms)
+query_weights = cal_query_weights(query_terms, inverted_index, terms)
+cosine_similarities = cal_cosine_similarity(query_terms, terms, document_weights, query_weights)
+sorted_cosine_similarities = sort_cosine_similarities(cosine_similarities)
+print(sorted_cosine_similarities)
+
