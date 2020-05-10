@@ -6,7 +6,7 @@ from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLineEdit, QLabel, QTextBrowser
 from PyQt5.QtCore import pyqtSlot
 from ir_system.aggregate_results import get_results
-from gui.query_spellchecker import spell_check
+from user_interface.query_spellchecker import spell_check
 
 global url_content_map
 global url_title_map
