@@ -72,8 +72,7 @@ def get_results(query, number_of_links):
 
 
 def main():
-    get_results()
-    load_pickles()
+    pass
 
 
 if __name__ == '__main__':
