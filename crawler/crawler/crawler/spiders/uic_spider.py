@@ -52,7 +52,7 @@ class UicSpiderSpider(CrawlSpider):
         for link in le.extract_links(response):
             outlinks.append(link.url)
 
-        if title != 'UIC Directory' and 'uic.edu' in response.request.url:
+        if title != 'UIC Directory' and title != 'Search Help' and 'uic.edu' in response.request.url:
             item['title'] = title
             item['url'] = response.request.url
             item['outlinks'] = outlinks
