@@ -185,9 +185,9 @@ class App(QMainWindow):
 
 def main():
     app = QApplication(sys.argv)
-    ex = App()
+    search_engine = App()
     load_url_pickles()
-    ex.show()
+    search_engine.show()
     sys.exit(app.exec_())
 
 
