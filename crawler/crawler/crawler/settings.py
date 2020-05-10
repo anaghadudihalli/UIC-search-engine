@@ -67,7 +67,7 @@ ROBOTSTXT_OBEY = True
 #     'crawler.pipelines.CrawlerPipeline': 300,
 # }
 
-CLOSESPIDER_PAGECOUNT = 30
+CLOSESPIDER_PAGECOUNT = 10000
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
 # AUTOTHROTTLE_ENABLED = True

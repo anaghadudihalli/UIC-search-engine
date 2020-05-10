@@ -15,7 +15,7 @@ stop_words = list(set(stopwords.words('english')))
 def read_files():
     corpus = []
     cur_dir = os.path.dirname(__file__)
-    relative_path = '../crawler/crawler/4000.json'
+    relative_path = '../crawler/crawler/corpus.json'
     abs_file_path = os.path.join(cur_dir, relative_path)
 
     with open(abs_file_path) as f:
