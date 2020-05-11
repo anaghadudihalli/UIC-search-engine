@@ -13,7 +13,7 @@ To run the program from terminal just use the command from the home directory of
 	> cd user_interface
 	> python run_uic_search.py 
 
-If you wish to crawl and run the program from scratch, delete the file "corpus.json" under "crawler/crawler/" directory, and then follow the following instructions from the home directory of the project:
+If you wish to crawl and run the program from scratch, delete the file "corpus.json" under "crawler/crawler/" directory. It currently crawls for around 7000 pages. To change the number of pages you want to crawl, change the value of "CLOSESPIDER_PAGECOUNT" to your desired number in "crawler/crawler/crawler/settings.py". Then follow the following instructions from the home directory of the project:
 
 	> cd crawler/crawler
 	> scrapy crawl uic_spider -o corpus.json
