@@ -4,9 +4,7 @@
 
 Final project for CS 582 Information Retrieval course at University of Illinois at Chicago.
 
--
 ![Results](screenshot.png)
--
 
 ## Running the program
 
