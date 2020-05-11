@@ -6,6 +6,16 @@ Final project for CS 582 Information Retrieval course at University of Illinois 
 
 ![Results](screenshot.png)
 
+## Dependencies Required
+- Scrapy
+- BeautifulSoup
+- networkx
+- nltk
+- PyQt5
+- pyspellchecker
+
+All the above dependencies can be installed through `pip`
+
 ## Running the program
 
 To run the program from terminal just use the command from the home directory of the project:
@@ -27,16 +37,6 @@ Delete the existing pickle files in the "pickles/" directory. From the home dire
 	> cd user_interface
 	> python run_uic_search.py
 
-
-## Dependencies Required
-- Scrapy
-- BeautifulSoup
-- networkx
-- nltk
-- PyQt5
-- pyspellchecker
-
-All the above dependencies can be installed through `pip`
 
 # Overview
 
