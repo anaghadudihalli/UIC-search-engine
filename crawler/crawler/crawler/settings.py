@@ -19,7 +19,8 @@ NEWSPIDER_MODULE = 'crawler.spiders'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
-
+SCHEDULER_DISK_QUEUE = 'scrapy.squeues.PickleFifoDiskQueue'
+SCHEDULER_MEMORY_QUEUE = 'scrapy.squeues.FifoMemoryQueue'
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
 
@@ -67,7 +68,7 @@ ROBOTSTXT_OBEY = True
 #     'crawler.pipelines.CrawlerPipeline': 300,
 # }
 
-CLOSESPIDER_PAGECOUNT = 10000
+CLOSESPIDER_PAGECOUNT = 7000
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
 # AUTOTHROTTLE_ENABLED = True
